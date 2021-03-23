@@ -27,7 +27,7 @@ nav
     width: 198px;
     margin: 3px 0px;
     text-decoration: none;
-    background-color: #9da8f5;
+    background-color: #00a8f5;
     color: #000000;
     text-align: center;
     height: 30px;
@@ -134,7 +134,7 @@ p
 
 .lefttext
 {
-    color: #0000ff;
+    color: copyright_color;
     float: right;
     margin: auto 20px auto auto;
 }
