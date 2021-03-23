@@ -21,8 +21,8 @@ def replace_colors_to_values(string):
     string.replace("main_color", "#" + main_color)
     return string
 
-stdin = open("./style_template_for_experiment.txt", 'r')
-stdout = open("./style.css", 'w')
+stdin = open("./css/style_template_for_experiment.txt", 'r')
+stdout = open("./css/style.css", 'w')
 
 for i in stdin:
     print(replace_colors_to_values(i), file = stdout)
