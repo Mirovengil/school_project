@@ -1,0 +1,140 @@
+nav
+{
+    background-color: nav_color;
+    width: 200px;
+    height: 10800px;
+    display: inline-block;
+    padding: 15px;
+    margin: 0px;
+    position:fixed;
+    top: 138.5px;
+    z-index: 100;
+    left: 0px;
+    top: 120px;
+}
+
+.navpar
+{
+    display: block;
+    color: #000000;
+    text-align: center;
+    font-size: 25px;
+}
+
+.readdr
+{
+    display: block;
+    width: 198px;
+    margin: 3px 0px;
+    text-decoration: none;
+    background-color: readdr_color;
+    color: #000000;
+    text-align: center;
+    height: 30px;
+    padding: 3px 0px;
+    line-height: 30px;
+}
+
+.readdr:hover
+{
+    background-color: readdr_hover_color;
+}
+
+body
+{
+    background-color: main_color;
+    font-family: "Times New Roman";
+    font-size: 19px;
+}
+
+.logo
+{
+    display: inline-block;
+    background: url("../img/site-logo.png") no-repeat;
+    height: 75px;
+    width: 75px;
+    margin: 10px 340px 10px 85px;
+}
+
+.logo:hover
+{
+    display: inline-block;
+    background: url("../img/site-logo-active.png") no-repeat;
+    height: 75px;
+    width: 75px;
+}
+
+header
+{
+    background-color: header_color;
+    margin: 0px;
+    top: 0px;
+    left: 0px;
+    padding: 10px 0px;
+    display: block;
+    position: fixed;
+    height: 100px;
+    width: 10800px;
+    z-index: 101;
+}
+
+.sitename
+{
+    display: inline-block;
+    font-size: 75px;
+    padding: 0px;
+    margin: 0px;
+    height: 80px;
+    line-height: 80px;
+    vertical-align: 20px;
+    text-align: center;
+}
+
+.fake
+{
+    display: inline-block;
+    font-size: 75px;
+    padding: 0px;
+    margin: 0px;
+    height: 80px;
+    line-height: 80px;
+    vertical-align: 20px;
+    text-align: center;
+    color: fake_letter_color;
+}
+
+.footer
+{
+    display: inline-block;
+    height: 75px;
+    width: 75px;
+    position: fixed;
+    background: url("../img/arrow-up.png");
+    right: 20px;
+    bottom: 5px;
+}
+
+.footer:hover
+{
+    background: url("../img/arrow-up-active.png");
+}
+
+article
+{
+    position: absolute;
+    top: 139.5px;
+    left: 240px;
+}
+
+p
+{
+    font-family: "Times New Roman";
+    font-size: 20px;
+}
+
+.lefttext
+{
+    color: copyright_color;
+    float: right;
+    margin: auto 20px auto auto;
+}
