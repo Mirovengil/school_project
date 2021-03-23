@@ -8,7 +8,7 @@ readdr_color = "66a5ad"
 readdr_hover_color = "003b46"
 
 #Буквы "i" в названии сайта
-fake_letter_color = "c4dfe6"
+fake_letter_color = "ff7f50"
 
 #Фона сайта
 main_color = "c4dfe6"
