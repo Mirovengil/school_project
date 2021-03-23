@@ -16,9 +16,9 @@ nav
 .navpar
 {
     display: block;
-    color: #000000;
+    color: #cddfe6;
     text-align: center;
-    font-size: 25px;
+    font-size: 30px;
 }
 
 .readdr
@@ -38,6 +38,7 @@ nav
 .readdr:hover
 {
     background-color: readdr_hover_color;
+    color: readdr_new_color;
 }
 
 body

@@ -1,6 +1,6 @@
 nav
 {
-    background-color: #f7e677;
+    background-color: #07575b;
     width: 200px;
     height: 10800px;
     display: inline-block;
@@ -16,9 +16,9 @@ nav
 .navpar
 {
     display: block;
-    color: #000000;
+    color: #cddfe6;
     text-align: center;
-    font-size: 25px;
+    font-size: 30px;
 }
 
 .readdr
@@ -27,7 +27,7 @@ nav
     width: 198px;
     margin: 3px 0px;
     text-decoration: none;
-    background-color: #00a8f5;
+    background-color: #66a5ad;
     color: #000000;
     text-align: center;
     height: 30px;
@@ -37,12 +37,13 @@ nav
 
 .readdr:hover
 {
-    background-color: #00a8f5;
+    background-color: #003b46;
+    color: #c4dfe6;
 }
 
 body
 {
-    background-color: #bcfab6;
+    background-color: #c4dfe6;
     font-family: "Times New Roman";
     font-size: 19px;
 }
@@ -66,7 +67,7 @@ body
 
 header
 {
-    background-color: #faab00;
+    background-color: #66a5ad;
     margin: 0px;
     top: 0px;
     left: 0px;
@@ -100,7 +101,7 @@ header
     line-height: 80px;
     vertical-align: 20px;
     text-align: center;
-    color: #00a8f5;
+    color: #c4dfe6;
 }
 
 .footer
@@ -134,7 +135,7 @@ p
 
 .lefttext
 {
-    color: copyright_color;
+    color: #66a5ad;
     float: right;
     margin: auto 20px auto auto;
 }

@@ -1,20 +1,26 @@
 #Навигационной менюшки
-nav_color = "f7e677"
+nav_color = "07575b"
 
 #Ссылки в менюшке навигации
-readdr_color = "00a8f5"
+readdr_color = "66a5ad"
 
 #Ссылки в менюшке навигации, когда на неё навели курсор
-readdr_hover_color = "00a8f5"
+readdr_hover_color = "003b46"
 
 #Буквы "i" в названии сайта
-fake_letter_color = "00a8f5"
+fake_letter_color = "c4dfe6"
 
 #Фона сайта
-main_color = "bcfab6"
+main_color = "c4dfe6"
 
 #Плашки в верху сайта
-header_color = "faab00"
+header_color = "66a5ad"
+
+#Надписи о правах
+copyright_color = "66a5ad"
+
+#Цвета текста на навигации после наведения
+readdr_new_color = "c4dfe6"
 
 def replace_colors_to_values(string):
     string = string.replace("nav_color", "#" + nav_color)
@@ -23,6 +29,8 @@ def replace_colors_to_values(string):
     string = string.replace("fake_letter_color", "#" + fake_letter_color)
     string = string.replace("main_color", "#" + main_color)
     string = string.replace("header_color", "#" + header_color)
+    string = string.replace("copyright_color", "#" + copyright_color)
+    string = string.replace("readdr_new_color", "#" + readdr_new_color)
     return string
 
 stdin = open("./css/style_template_for_experiment.txt", 'r')
