@@ -1,9 +1,24 @@
 @media (min-width: 600px) and (max-width: 999px)
 {
+    .menu_icon
+    {
+        display: inline-block;
+        background: url("../img/menu-icon-little.png") no-repeat;
+        height: 75px;
+        width: 75px;
+        margin: 7px 5px 0vw 5px;
+        float: left;
+    }
+    
+    .menu_icon:hover
+    {
+        background: url("../img/menu-icon-active-little.png") no-repeat;
+    }
+
     nav
     {
         background-color: #07575b;
-        display: block;
+        display: none;
         padding: 10px 0px;
         margin: 0px;
         position:relative;
@@ -35,7 +50,7 @@
         background: url("../img/site-logo-little.png") no-repeat;
         height: 45px;
         width: 45px;
-        margin: 7px -13vw 0vw 10vw;
+        margin: 7px 5px 0vw 5px;
         float: left;
     }
     
@@ -132,7 +147,7 @@
         color: #66a5ad;
         position: relative;
         top: 30px;
-	display: block;
+        display: block;
     }
 
 }

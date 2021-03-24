@@ -63,3 +63,4 @@ def main(name):
 main("style_1000_inf")
 main("style_600_1000")
 main("style_0_600")
+print('CSS обновлён!')

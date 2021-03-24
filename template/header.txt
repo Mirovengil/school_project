@@ -1,5 +1,6 @@
 <header>
-    <a class = "logo" onclick = "show_menu()"></a>
+    <a class = "logo" href = "./index.html"></a>
+    <a class = "menu_icon" onclick = "show_menu()"></a>
     <p class = "sitename" id = "up">Alcor<a class = "fake">i</a>thm</p>
 </header>
 <main>

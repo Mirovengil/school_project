@@ -1,9 +1,24 @@
 @media (max-width: 599px)
 {
+    .menu_icon
+    {
+        display: inline-block;
+        background: url("../img/menu-icon.png") no-repeat;
+        height: 75px;
+        width: 75px;
+        margin: 7px 5px 0vw 0px;
+        float: left;
+    }
+    
+    .menu_icon:hover
+    {
+        background: url("../img/menu-icon-active.png") no-repeat;
+    }
+
     nav
     {
         background-color: #07575b;
-        display: block;
+        display: none;
         padding: 10px 0px;
         margin: 0px;
         position:relative;
@@ -35,8 +50,23 @@
         background: url("../img/site-logo.png") no-repeat;
         height: 75px;
         width: 75px;
-        margin: 0vw -13vw 0vw 10vw;
+        margin: 7px 0px 0vw 0px;
         float: left;
+    }
+
+    .menu_icon
+    {
+        display: inline-block;
+        background: url("../img/menu-icon.png") no-repeat;
+        height: 75px;
+        width: 75px;
+        margin: 7px 5px 0vw 5px;
+        float: left;
+    }
+    
+    .menu_icon:hover
+    {
+        background: url("../img/menu-icon-active.png") no-repeat;
     }
     
     .sitename
@@ -45,8 +75,8 @@
         font-size: 75px;
         padding: 0px;
         margin: 0px;
-        height: 80px;
-        line-height: 80px;
+        height: 85px;
+        line-height: 85px;
         vertical-align: 20px;
         text-align: center;
     }
@@ -132,7 +162,7 @@
         color: #66a5ad;
         position: relative;
         top: 30px;
-	display: block;
+        display: block;
     }
 
 }
