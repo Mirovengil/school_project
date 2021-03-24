@@ -132,6 +132,7 @@
         color: copyright_color;
         position: relative;
         top: 30px;
+	display: block;
     }
 
 }

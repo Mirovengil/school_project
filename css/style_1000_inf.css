@@ -1,5 +1,25 @@
+.btn
+{
+    position: relative;
+    display: inline-block;
+    width: 350px;
+    padding: 10px 0px;
+    color: #000000;
+    background-color: #66a5ad;
+    text-decoration: none;
+    text-align: center;
+    font-size: 20px;
+}
+
+.btn:hover
+{
+    color: #c4dfe6;
+    background-color: #003b46;
+}
+
 @media (min-width: 1000px)
 {
+
     nav
     {
         background-color: #07575b;
@@ -132,6 +152,7 @@
         color: #66a5ad;
         position: relative;
         top: 30px;
+        display: block;
     }
 
 }

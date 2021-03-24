@@ -132,6 +132,7 @@
         color: #66a5ad;
         position: relative;
         top: 30px;
+	display: block;
     }
 
 }

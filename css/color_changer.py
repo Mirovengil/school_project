@@ -22,6 +22,18 @@ copyright_color = "66a5ad"
 #Цвета текста на навигации после наведения
 readdr_new_color = "c4dfe6"
 
+#Цвет кнопки в статье
+btn_color = "66a5ad"
+
+#Цвет текста кнопки в статье
+btn_text_color = "000000"
+
+#Цвет кнопки в статье, когда на кнопку навели
+btn_color_hover = "003b46"
+
+#Цвет текста кнопки в статье, когда на кнопку навели
+btn_text_color_hover = "c4dfe6"
+
 def replace_colors_to_values(string):
     string = string.replace("nav_color", "#" + nav_color)
     string = string.replace("readdr_color", "#" + readdr_color)
@@ -31,6 +43,10 @@ def replace_colors_to_values(string):
     string = string.replace("header_color", "#" + header_color)
     string = string.replace("copyright_color", "#" + copyright_color)
     string = string.replace("readdr_new_color", "#" + readdr_new_color)
+    string = string.replace("btn_color_hover", "#" + btn_color_hover)
+    string = string.replace("btn_text_color_hover", "#" + btn_text_color_hover)
+    string = string.replace("btn_color", "#" + btn_color)
+    string = string.replace("btn_text_color", "#" + btn_text_color)
     return string
 
 
