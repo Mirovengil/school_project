@@ -92,14 +92,6 @@
 
     .fake
     {
-        display: inline-block;
-        font-size: 75px;
-        padding: 0px;
-        margin: 0px;
-        height: 80px;
-        line-height: 80px;
-        vertical-align: 20px;
-        text-align: center;
         color: #ff7f50;
     }
 
