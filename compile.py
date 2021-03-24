@@ -35,7 +35,7 @@ def build_page(string):
     string = rdf(string).split(SEP)
     filename = string[0]
     name = string[1] 
-    temp = open('./template/any_page.txt', 'r')
+    temp = open('./template/std/any_page.txt', 'r')
     for i in temp:
         i = rdf(i)
         i = i.replace('article', filename)

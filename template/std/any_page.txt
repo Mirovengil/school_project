@@ -1,0 +1,6 @@
+<~std/init~>
+<~std/header~>
+<~std/nav~>
+<~article~>
+<~std/footer~>
+<~std/JS~>

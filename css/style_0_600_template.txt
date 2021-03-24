@@ -3,7 +3,7 @@
     .menu_icon
     {
         display: inline-block;
-        background: url("../img/menu-icon.png") no-repeat;
+        background: url("../img/icons/menu-icon.png") no-repeat;
         height: 75px;
         width: 75px;
         margin: 7px 5px 0vw 0px;
@@ -12,7 +12,7 @@
     
     .menu_icon:hover
     {
-        background: url("../img/menu-icon-active.png") no-repeat;
+        background: url("../img/icons/menu-icon-active.png") no-repeat;
     }
 
     nav
@@ -47,7 +47,7 @@
     .logo
     {
         display: inline-block;
-        background: url("../img/site-logo.png") no-repeat;
+        background: url("../img/icons/site-logo.png") no-repeat;
         height: 75px;
         width: 75px;
         margin: 7px 0px 0vw 0px;
@@ -57,7 +57,7 @@
     .menu_icon
     {
         display: inline-block;
-        background: url("../img/menu-icon.png") no-repeat;
+        background: url("../img/icons/menu-icon.png") no-repeat;
         height: 75px;
         width: 75px;
         margin: 7px 5px 0vw 5px;
@@ -66,7 +66,7 @@
     
     .menu_icon:hover
     {
-        background: url("../img/menu-icon-active.png") no-repeat;
+        background: url("../img/icons/menu-icon-active.png") no-repeat;
     }
     
     .sitename
@@ -118,7 +118,7 @@
 
     .logo:hover
     {
-        background: url("../img/site-logo-active.png") no-repeat;
+        background: url("../img/icons/site-logo-active.png") no-repeat;
     }
 
 
@@ -136,14 +136,14 @@
         height: 75px;
         width: 75px;
         position: fixed;
-        background: url("../img/arrow-up.png");
+        background: url("../img/icons/arrow-up.png");
         right: 20px;
         bottom: 5px;
     }
 
     .footer:hover
     {
-        background: url("../img/arrow-up-active.png");
+        background: url("../img/icons/arrow-up-active.png");
     }
 
     article
