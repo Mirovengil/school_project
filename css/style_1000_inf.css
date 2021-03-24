@@ -10,7 +10,7 @@
         top: -8px;
         z-index: 100;
         left: -8px;
-        width: 98.8vw;
+        width: 100vw;
         text-align: center;
     }
 
@@ -24,7 +24,7 @@
         display: block;
         position: relative;
         height: 100px;
-        width: 98.8vw;
+        width: 100vw;
         z-index: 101;
         text-align: center;
     }
@@ -35,7 +35,7 @@
         background: url("../img/site-logo.png") no-repeat;
         height: 75px;
         width: 75px;
-        margin: 0vw -13vw 0vw 10vw;
+        margin: 7px -13vw 0vw 10vw;
         float: left;
     }
     
@@ -45,8 +45,8 @@
         font-size: 75px;
         padding: 0px;
         margin: 0px;
-        height: 80px;
-        line-height: 80px;
+        height: 85px;
+        line-height: 85px;
         vertical-align: 20px;
         text-align: center;
     }
