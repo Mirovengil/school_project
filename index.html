@@ -10,10 +10,10 @@
     </head>
     <body>
         <header>
-            <a class = "logo" href = "./about.html"></a>
+            <a class = "logo" onclick = "show_menu()"></a>
             <p class = "sitename" id = "up">Alcor<a class = "fake">i</a>thm</p>
         </header>
-        <nav class = "nav">
+        <nav class = "nav" id = "menu">
             <p class = "navpar">Навигация</p>
             <a href="./index.html" class = "readdr">На главную</a>
             <a href="./algorithm_arrays.html" class = "readdr">Алгоритмы на массивы</a>
@@ -79,3 +79,21 @@
         </footer>
     </body>
 </html>
+
+<!-- Да, я знаю, что это -- поздравление самого себя с 21 марта, но благодаря тому, что сайт будет абсолютно статический -- почему бы и нет? -->
+<!-- Особенно, если учесть, что JS будет только здесь и в тестах -- проблем быть не должно от слова "совсем". -->
+<script>
+    
+    function show_menu()
+    {
+        let menu = document.getElementById("menu");
+        if (menu.style.display != "none")
+        {
+            menu.style.display = "none";
+        }
+        else
+        {
+            menu.style.display = "inline-block";
+        };
+    };
+</script>
