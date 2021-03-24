@@ -2,4 +2,5 @@
 <p class = "navpar">Навигация</p>
 <a href="./main.html" class = "readdr">Главная страница</a>
 <a href="./about.html" class = "readdr">О нас</a>
+<a href="./samples.html" class = "readdr">Примеры</a>
 </nav>

@@ -1,2 +1,3 @@
 main<~sep~>Главная страница
 about<~sep~>О нас
+samples<~sep~>Примеры

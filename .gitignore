@@ -19,3 +19,7 @@
 
 # End of https://www.toptal.com/developers/gitignore/api/linux
 
+
+#Сайт собирается по готовому шаблону, поэтому нет нужды хранить html.
+#Сайт компилируется скриптом compile.py. 
+*.html

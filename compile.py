@@ -43,7 +43,7 @@ def build_page(string):
         i = i.replace(CLOSE, "")
         rez = rez + file_to_str(i + ".txt")
     temp.close()
-    rez.replace(NAME, name)
+    rez = rez.replace(NAME, name)
     temp = open('./' + filename + '.html', 'w')
     print(rez, file = temp, end = "")
     temp.close()
