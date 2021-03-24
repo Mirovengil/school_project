@@ -26,6 +26,29 @@
         height: 100px;
         width: 98.8vw;
         z-index: 101;
+        text-align: center;
+    }
+
+    .logo
+    {
+        display: inline-block;
+        background: url("../img/site-logo.png") no-repeat;
+        height: 75px;
+        width: 75px;
+        margin: 0vw -13vw 0vw 10vw;
+        float: left;
+    }
+    
+    .sitename
+    {
+        display: inline-block;
+        font-size: 75px;
+        padding: 0px;
+        margin: 0px;
+        height: 80px;
+        line-height: 80px;
+        vertical-align: 20px;
+        text-align: center;
     }
 
     .navpar
@@ -34,6 +57,7 @@
         color: #cddfe6;
         text-align: center;
         font-size: 30px;
+        margin: 5px;
     }
 
     .readdr
@@ -62,15 +86,6 @@
         font-size: 19px;
     }
 
-    .logo
-    {
-        display: inline-block;
-        background: url("../img/site-logo.png") no-repeat;
-        height: 75px;
-        width: 75px;
-        margin: 10px 35vw 10px 5vw;
-    }
-
     .logo:hover
     {
         background: url("../img/site-logo-active.png") no-repeat;
@@ -78,17 +93,7 @@
 
 
 
-    .sitename
-    {
-        display: inline-block;
-        font-size: 75px;
-        padding: 0px;
-        margin: 0px;
-        height: 80px;
-        line-height: 80px;
-        vertical-align: 20px;
-        text-align: center;
-    }
+
 
     .fake
     {
