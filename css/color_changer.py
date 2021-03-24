@@ -33,11 +33,16 @@ def replace_colors_to_values(string):
     string = string.replace("readdr_new_color", "#" + readdr_new_color)
     return string
 
-stdin = open("./css/style_template_for_experiment.txt", 'r')
-stdout = open("./css/style.css", 'w')
 
-for i in stdin:
-    print(replace_colors_to_values(i), file = stdout, end = "")
+def main(name):
+    stdin = open("./css/" + name + "_template" + ".txt", 'r')
+    stdout = open("./css/" + name + ".css", 'w')
 
-stdin.close()
-stdout.close()
+    for i in stdin:
+        print(replace_colors_to_values(i), file = stdout, end = "")
+
+    stdin.close()
+    stdout.close()
+
+main("style_1000_inf")
+main("style_600_1000")
