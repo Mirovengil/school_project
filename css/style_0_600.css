@@ -1,14 +1,14 @@
-@media (max-width: 999px) and (min-width: 600px)
+@media (max-width: 599px)
 {
     nav
     {
-        background-color: nav_color;
+        background-color: #07575b;
         width: 150px;
         height: 10800px;
         display: inline-block;
         padding: 15px;
         margin: 0px;
-        position: relative;
+        position: fixed;
         top: 138.5px;
         z-index: 100;
         left: 0px;
@@ -17,7 +17,6 @@
 
     .navpar
     {
-        position: relative;
         display: block;
         color: #cddfe6;
         text-align: center;
@@ -26,12 +25,11 @@
 
     .readdr
     {
-        position: relative;
         display: block;
         width: 148px;
         margin: 3px 0px;
         text-decoration: none;
-        background-color: readdr_color;
+        background-color: #66a5ad;
         color: #000000;
         text-align: center;
         height: 20px;
@@ -41,13 +39,13 @@
 
     .readdr:hover
     {
-        background-color: readdr_hover_color;
-        color: readdr_new_color;
+        background-color: #003b46;
+        color: #c4dfe6;
     }
 
     body
     {
-        background-color: main_color;
+        background-color: #c4dfe6;
         font-family: "Times New Roman";
         font-size: 14px;
     }
@@ -70,7 +68,7 @@
 
     header
     {
-        background-color: header_color;
+        background-color: #66a5ad;
         margin: 0px;
         top: 0px;
         left: 0px;
@@ -100,7 +98,7 @@
         padding: 0px;
         margin: 0px;
         text-align: center;
-        color: fake_letter_color;
+        color: #ff7f50;
         position: relative;
         vertical-align:top;
     }
@@ -136,7 +134,7 @@
 
     .lefttext
     {
-        color: copyright_color;
+        color: #66a5ad;
         float: right;
         margin: auto 20px auto auto;
     }

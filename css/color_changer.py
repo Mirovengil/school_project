@@ -35,8 +35,8 @@ def replace_colors_to_values(string):
 
 
 def main(name):
-    stdin = open("./css/" + name + "_template" + ".txt", 'r')
-    stdout = open("./css/" + name + ".css", 'w')
+    stdin = open("./" + name + "_template" + ".txt", 'r')
+    stdout = open("./" + name + ".css", 'w')
 
     for i in stdin:
         print(replace_colors_to_values(i), file = stdout, end = "")
@@ -46,3 +46,4 @@ def main(name):
 
 main("style_1000_inf")
 main("style_600_1000")
+main("style_0_600")
