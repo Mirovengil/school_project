@@ -1,0 +1,6 @@
+<~init~>
+<~header~>
+<~nav~>
+<~article~>
+<~footer~>
+<~JS~>

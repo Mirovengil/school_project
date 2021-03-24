@@ -1,0 +1,5 @@
+<nav class = "nav" id = "menu">
+<p class = "navpar">Навигация</p>
+<a href="./main.html" class = "readdr">Главная страница</a>
+<a href="./about.html" class = "readdr">О нас</a>
+</nav>
