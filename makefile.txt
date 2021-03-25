@@ -1,3 +1,4 @@
-index<~sep~>Главная страница
-about<~sep~>О нас
-samples<~sep~>Примеры
+index<~key~>Главная страница
+about<~key~>О нас
+samples<~key~>Примеры
+swap<~page~>Функция обмена

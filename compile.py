@@ -1,12 +1,16 @@
-SEP = "<~sep~>"
+SEP = "<~key~>"
+SEP2 = "<~page~>"
 OPEN = "<~"
 CLOSE = "~>"
 NAME = "<~name~>"
+
 def rdf(string):
     return string.replace('\n', '')
 
 def to_nav_ref(string):
     string = string.split(SEP)
+    if len(string) < 2:
+        return ""
     filename = "./" + string[0] + ".html"
     text = string[1] 
     return '''<a href="''' + filename + '''" class = "readdr">''' + text + "</a>\n"
@@ -32,7 +36,7 @@ def file_to_str(name):
 
 def build_page(string):
     rez = ""
-    string = rdf(string).split(SEP)
+    string = rdf(string).replace(SEP2, SEP).split(SEP)
     filename = string[0]
     name = string[1] 
     temp = open('./template/std/any_page.txt', 'r')
@@ -49,7 +53,7 @@ def build_page(string):
     temp.close()
     
 
-f = open('./template/nav.txt', 'w')
+f = open('./template/std/nav.txt', 'w')
 print(generate_nav("makefile.txt"), file = f, end = "")
 f.close()
 f = open('./makefile.txt', 'r')
