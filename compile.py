@@ -3,6 +3,7 @@ SEP2 = "<~page~>"
 OPEN = "<~"
 CLOSE = "~>"
 NAME = "<~name~>"
+TAB = "<~tab~>"
 
 def rdf(string):
     return string.replace('\n', '')
@@ -48,6 +49,7 @@ def build_page(string):
         rez = rez + file_to_str(i + ".txt")
     temp.close()
     rez = rez.replace(NAME, name)
+    rez = rez.replace(TAB, "&#160;&#160;&#160;&#160;")
     temp = open('./' + filename + '.html', 'w')
     print(rez, file = temp, end = "")
     temp.close()

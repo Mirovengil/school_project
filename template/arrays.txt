@@ -1,0 +1,3 @@
+<h1>Массивы</h1>
+<a href = "./sdwig_array.html" class = "btn">Сдвиг массива</a>
+<a href = "./sdwig_part_of_array.html" class = "btn">Сдвиг части массива</a>

@@ -1,4 +1,5 @@
 index<~key~>Главная страница
+arrays<~key~>Массивы
 about<~key~>О нас
-samples<~key~>Примеры
-swap<~page~>Функция обмена
+sdwig_array<~page~>Сдвиг массива
+sdwig_part_of_array<~page~>Сдвиг части массива
