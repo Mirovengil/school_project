@@ -3,3 +3,5 @@ arrays<~key~>Массивы
 about<~key~>О нас
 sdwig_array<~page~>Сдвиг массива
 sdwig_part_of_array<~page~>Сдвиг части массива
+based<~key~>Базовые алгоритмы
+swap<~page~>Обмен двух переменных значениями

@@ -2,5 +2,6 @@
 <~std/header~>
 <~std/nav~>
 <~article~>
+<~std/copyright~>
 <~std/footer~>
 <~std/JS~>

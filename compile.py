@@ -23,7 +23,7 @@ def generate_nav(f):
     nav_menu = nav_menu + '''<p class = "navpar">Навигация</p>\n'''
     for i in f:
         nav_menu = nav_menu + to_nav_ref(rdf(i))
-    nav_menu = nav_menu + '''</nav>\n'''
+    nav_menu = nav_menu + '''</nav>\n<h1><~name~></h1>\n'''
     f.close()
     return nav_menu
 
