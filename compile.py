@@ -55,7 +55,7 @@ def build_page(string):
     temp.close()
     
 
-f = open('./template/std/nav.txt', 'w')
+f = open('./template/std/nav.txt', 'w')  
 print(generate_nav("makefile.txt"), file = f, end = "")
 f.close()
 f = open('./makefile.txt', 'r')

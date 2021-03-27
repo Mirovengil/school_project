@@ -7,17 +7,17 @@
 <h2>Реализация с использованием третьей, дополнительной переменной</h2>
 
 <p>Давайте попробуем реализовать алгоритм "в лоб":</p>
-<p>C++</p>
+<p class = "lang">C++</p>
 <div class = "code">
     a = b;<br>
     b = a;
 </div>
-<p>Pascal</p>
+<p class = "lang">Pascal</p>
 <div class = "code">
     a := b;<br>
     b := a;
 </div>
-<p>Python</p>
+<p class = "lang">Python</p>
 <div class = "code">
     a = b<br>
     b = a
@@ -32,19 +32,19 @@
 <img src = "./img/based/002.png">
 
 <p>Теперь его будет совсем несложно реализовать на необходимом языке:</p>
-<p>C++</p>
+<p class = "lang">C++</p>
 <div class = "code">
     c = a;<br>
     a = b;<br>
     b = c;
 </div>
-<p>Pascal</p>
+<p class = "lang">Pascal</p>
 <div class = "code">
     c := a;<br>
     a := b;<br>
     b := c;
 </div>
-<p>Python</p>
+<p class = "lang">Python</p>
 <div class = "code">
     c = a<br>
     a = b<br>
@@ -71,19 +71,19 @@
 <p>Реализуется это чудо на основных языках безо всяких проблем, но неприменимо к строковым переменным, а только к числам.
 Зато оно работает быстрее, чем обмен через третью переменную.</p>
 
-<p>C++</p>
+<p class = "lang">C++</p>
 <div class = "code">
     a = a ^ b;<br>
     b = a ^ b;<br>
     a = a ^ b;
 </div>
-<p>Pascal</p>
+<p class = "lang">Pascal</p>
 <div class = "code">
     a := a <b>xor</b> b;<br>
     b := a <b>xor</b> b<br>
     a := a <b>xor</b> b;
 </div>
-<p>Python</p>
+<p class = "lang">Python</p>
 <div class = "code">
     a = a^b<br>
     b = a^b<br>
@@ -101,19 +101,19 @@ a = a - b = (a + b) - a = b + a - a = b
 
 <p>В реализации его также нет никаких сложностей:</p>
 
-<p>C++</p>
+<p class = "lang">C++</p>
 <div class = "code">
     a = a + b;<br>
     b = a - b;<br>
     a = a - b;
 </div>
-<p>Pascal</p>
+<p class = "lang">Pascal</p>
 <div class = "code">
     a := a + b;<br>
     b := a - b;<br>
     a := a - b;
 </div>
-<p>Python</p>
+<p class = "lang">Python</p>
 <div class = "code">
     a = a + b<br>
     b = a - b<br>
@@ -123,7 +123,7 @@ a = a - b = (a + b) - a = b + a - a = b
 <h2>Реализация через средства языка Python</h2>
 
 <p>Язык Python обладает встроенной в синтаксис возможностью выполнения обмена двух переменных значениями: </p>
-<p>Python</p>
+<p class = "lang">Python</p>
 <div class = "code">
     a, b = b, a
 </div>
