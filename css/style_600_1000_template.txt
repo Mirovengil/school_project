@@ -64,6 +64,7 @@
         line-height: 60px;
         vertical-align: 20px;
         text-align: center;
+        color: letter_color;
     }
 
     .navpar

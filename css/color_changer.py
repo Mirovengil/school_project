@@ -10,6 +10,9 @@ readdr_hover_color = "003b46"
 #Буквы "i" в названии сайта
 fake_letter_color = "ff7f50"
 
+#Остальных букв в названии сайта
+letter_color = "ffffff"
+
 #Фона сайта
 main_color = "c4dfe6"
 
@@ -51,6 +54,7 @@ def replace_colors_to_values(string):
     string = string.replace("btn_color", "#" + btn_color)
     string = string.replace("btn_text_color", "#" + btn_text_color)
     string = string.replace("code_color", "#" + code_color)
+    string = string.replace("letter_color", "#" + letter_color)
     return string
 
 
