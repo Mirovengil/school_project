@@ -1,3 +1,8 @@
+img
+{
+    display: block;
+}
+
 .btn
 {
     position: relative;

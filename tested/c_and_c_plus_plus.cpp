@@ -5,11 +5,18 @@ int main(void)
 {
     int n;
     std::cin >> n;
-    for (int i = 2; i * i <= n; ++i)
-        while (n % i == 0)
-        {
-            std::cout << i << " ";
-            n /= i;
-        };
+    int mass[n];
+    for (int i = 0; i < n; ++i)
+        std::cin >> mass[i];
+    
+    for (int i = 0; i < n / 2; ++i)
+    {
+        int temp = mass[i];
+        mass[i] = mass[n - 1 - i];
+        mass[n - 1 - i] = temp;
+    };
+    
+    for (int i = 0; i < n; ++i)
+        std::cout << mass[i] << " ";
     return 0;
 };
