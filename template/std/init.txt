@@ -7,5 +7,9 @@
         <link rel="stylesheet"href="./css/style_600_1000.css">
         <link rel="stylesheet"href="./css/style_0_600.css">
         <meta name = "viewport"content="width=device-width,initial-scale=1">
+        
+        <script src='http://yastatic.net/highlightjs/8.2/highlight.min.js'/></script>
+        <script type='text/javascript'>hljs.initHighlightingOnLoad();</script>
+        <link href='http://yastatic.net/highlightjs/8.2/styles/solarized_light.min.css' rel='stylesheet'/>
     </head>
     <body>

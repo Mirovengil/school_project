@@ -8,20 +8,20 @@
 
 <p>Давайте попробуем реализовать алгоритм "в лоб":</p>
 <p class = "lang">C++</p>
-<div class = "code">
+<pre><code class = "C++">
     a = b;<br>
     b = a;
-</div>
+</code></pre>
 <p class = "lang">Pascal</p>
-<div class = "code">
+<pre><code class = "Pascal">
     a := b;<br>
     b := a;
-</div>
+</code></pre>
 <p class = "lang">Python</p>
-<div class = "code">
+<pre><code class = "Python">
     a = b<br>
     b = a
-</div>
+</code></pre>
 
 <p>Но есть один нюанс. Обе переменные будут хранить значение <b>v2</b>:</p>
 
@@ -33,23 +33,23 @@
 
 <p>Теперь его будет совсем несложно реализовать на необходимом языке:</p>
 <p class = "lang">C++</p>
-<div class = "code">
+<pre><code class = "C++">
     c = a;<br>
     a = b;<br>
     b = c;
-</div>
+</code></pre>
 <p class = "lang">Pascal</p>
-<div class = "code">
+<pre><code class = "Pascal">
     c := a;<br>
     a := b;<br>
     b := c;
-</div>
+</code></pre>
 <p class = "lang">Python</p>
-<div class = "code">
+<pre><code class = "Python">
     c = a<br>
     a = b<br>
     b = c
-</div>
+</code></pre>
 
 <p>Это - самый простой и универсальный способ обменять две переменные значениями.
 Но существуют и ещё несколько, без использования третьей (это может пригодиться, например, 
@@ -72,23 +72,23 @@
 Зато оно работает быстрее, чем обмен через третью переменную.</p>
 
 <p class = "lang">C++</p>
-<div class = "code">
+<pre><code class = "C++">
     a = a ^ b;<br>
     b = a ^ b;<br>
     a = a ^ b;
-</div>
+</code></pre>
 <p class = "lang">Pascal</p>
-<div class = "code">
+<pre><code class = "Pascal">
     a := a <b>xor</b> b;<br>
     b := a <b>xor</b> b<br>
     a := a <b>xor</b> b;
-</div>
+</code></pre>
 <p class = "lang">Python</p>
-<div class = "code">
+<pre><code class = "Python">
     a = a^b<br>
     b = a^b<br>
     b = a^b
-</div>
+</code></pre>
 
 
 <h2>Реализация через арифметику</h2>
@@ -102,31 +102,31 @@ a = a - b = (a + b) - a = b + a - a = b
 <p>В реализации его также нет никаких сложностей:</p>
 
 <p class = "lang">C++</p>
-<div class = "code">
+<pre><code class = "C++">
     a = a + b;<br>
     b = a - b;<br>
     a = a - b;
-</div>
+</code></pre>
 <p class = "lang">Pascal</p>
-<div class = "code">
+<pre><code class = "Pascal">
     a := a + b;<br>
     b := a - b;<br>
     a := a - b;
-</div>
+</code></pre>
 <p class = "lang">Python</p>
-<div class = "code">
+<pre><code class = "Python">
     a = a + b<br>
     b = a - b<br>
     a = a - b
-</div>
+</code></pre>
 
 <h2>Реализация через средства языка Python</h2>
 
 <p>Язык Python обладает встроенной в синтаксис возможностью выполнения обмена двух переменных значениями: </p>
 <p class = "lang">Python</p>
-<div class = "code">
+<pre><code class = "Python">
     a, b = b, a
-</div>
+</code></pre>
 <p>Всё! Готово. Но стоит помнить, что Python, вследствие его интерпретируемости, обладает невысокой скоростью
 быстродействие, следовательно, его применение в олимпиадах есть вопрос неоднозначный. Однако вне олимпиад
 рекомендуется использовать этот способ, как наиболее краткий и простой.</p>

@@ -36,7 +36,7 @@ left = m:</p>
 не имеет значения. Следовательно, right - left меньше, чем 0.000001.</p> 
 <p>Пусть функция определена на промежутке (<b>a</b>; <b>b</b>), а искомый у обозначен как <b>y</b>. Код выглядит следующим образом:</p>
 <p  class = "lang">C++</p>
-<div class = "code">
+<pre><code class = "C++">
 double left = a; //Определение промежутка<br>
 double right = b; //Обратите внимание: работа ведётся в вещественных числах<br>
 while (right - left > 0.000001)<br>
@@ -47,9 +47,9 @@ while (right - left > 0.000001)<br>
 <~tab~>else //В противном случае рассматривать значения меньшие, чем m, не имеет смысла<br>
 <~tab~><~tab~>left = m;<br>
 };
-</div>
+</code></pre>
 <p  class = "lang">Pascal</p>
-<div class = "code">
+<pre><code class = "pascal">
 left := a; {Определение промежутка}<br>
 right := b; {Обратите внимание: работа ведётся в вещественных числах}<br>
 while (right - left > 0.000001) do<br>
@@ -60,9 +60,9 @@ begin<br>
 <~tab~>else {В противном случае рассматривать значения меньшие, чем m, не имеет смысла}<br>
 <~tab~><~tab~>left := m;<br>
 end;
-</div>
+</code></pre>
 <p  class = "lang">Python</p>
-<div class = "code">
+<pre><code class = "Python">
 left = a #Определение промежутка<br>
 right = b #Обратите внимание: работа ведётся в вещественных числах<br>
 while right - left > 0.000001:<br>
@@ -71,7 +71,7 @@ while right - left > 0.000001:<br>
 <~tab~><~tab~>right = m<br>
 <~tab~>else: #В противном случае рассматривать значения меньшие, чем m, не имеет смысла<br>
 <~tab~><~tab~>left = m<br>
-</div>
+</code></pre>
 <p>Т.к. разница между <b>left</b> и <b>right</b> равна погрешности измерения, то результат хранится и в <b>left</b>, и в <b>right</b>.
 Для максимальной точности вычислений можете взять среднее между ними.</p>
 <a href="./based.html" class = "readdr">Базовые алгоритмы</a>

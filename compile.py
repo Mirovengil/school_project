@@ -5,6 +5,13 @@ CLOSE = "~>"
 NAME = "<~name~>"
 TAB = "<~tab~>"
 
+PYSTART = "<~py~>"
+PYEND = "<~/py~>"
+CSTART = "<~c~>"
+CEND = "<~/c~>"
+PASTART = "<~pa~>"
+PAEND = "<~/pa~>"
+
 def rdf(string):
     return string.replace('\n', '')
 
@@ -46,6 +53,12 @@ def build_page(string):
         i = i.replace('article', filename)
         i = i.replace(OPEN, "")
         i = i.replace(CLOSE, "")
+        i = i.replace(PYSTART, '''<p class = "lang">Python/p><pre><code class = "Python">''')
+        i = i.replace(PASTART, '''<p class = "lang">Pascal/p><pre><code class = "Pascal">''')
+        i = i.replace(CSTART, '''<p class = "lang">C++/p><pre><code class = "C++">''')
+        i = i.replace(PYEND, '''</code></pre>''')
+        i = i.replace(CEND, '''</code></pre>''')
+        i = i.replace(PAEND, '''</code></pre>''')
         rez = rez + file_to_str(i + ".txt")
     temp.close()
     rez = rez.replace(NAME, name)
