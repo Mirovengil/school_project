@@ -4,5 +4,6 @@
 <a href="./about.html" class = "readdr">О нас</a>
 <a href="./arrays.html" class = "readdr">Массивы</a>
 <a href="./based.html" class = "readdr">Базовые алгоритмы</a>
+<a href="./integer.html" class = "readdr">Алгоритмы обработки чисел</a>
 </nav>
 <h1><~name~></h1>

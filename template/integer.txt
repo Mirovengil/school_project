@@ -1,0 +1,2 @@
+<a href = "./dividers.html" class = "btn">Разбиение на простые множители</a>
+<a href = "./split_to_digits.html" class = "btn">Разбиение числа на цифры</a>

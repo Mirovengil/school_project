@@ -1,3 +1,2 @@
 <a href = "./swap.html" class = "btn">Обмен двух переменных значениями</a>
 <a href = "./bin_find.html" class = "btn">Бинарный поиск по ответу</a>
-<a href = "./dividers.html" class = "btn">Разбиение на простые множители</a>
