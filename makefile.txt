@@ -10,3 +10,5 @@ dividers<~page~>Разбиение на простые множители
 reverse<~page~>Реверс массива
 split_to_digits<~page~>Разбиение числа на цифры
 integer<~key~>Алгоритмы обработки чисел
+stack<~page~>Стек
+struct<~key~>Структуры данных
