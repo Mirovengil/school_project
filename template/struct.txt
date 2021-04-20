@@ -1,1 +1,2 @@
 <a href="./stack.html" class = "btn">Стек</a>
+<a href="./dict.html" class = "btn">Ассоциативный массив</a>
