@@ -38,12 +38,13 @@ def file_to_str(name):
     f = open('./template/' + name, 'r')
     rez = ""
     for i in f:
-        i = i.replace(PYSTART, '''<p class = "lang">Python</p><pre><code class = "Python">''')
-        i = i.replace(PASTART, '''<p class = "lang">Pascal</p><pre><code>''')
-        i = i.replace(CSTART, '''<p class = "lang">C++</p><pre><code class = "C++">''')
+        i = i.replace(PYSTART, '''<p class = "lang"><b>Python</b></p><pre><code class = "Python">''')
+        i = i.replace(PASTART, '''<p class = "lang"><b>Pascal</b></p><pre><code>''')
+        i = i.replace(CSTART, '''<p class = "lang"><b>C++</b></p><pre><code class = "C++">''')
         i = i.replace(PYEND, '''</code></pre>''')
         i = i.replace(CEND, '''</code></pre>''')
         i = i.replace(PAEND, '''</code></pre>''')
+        i = i.replace(' -- ', ' — ')
         rez = rez + i
     f.close()
     return rez
