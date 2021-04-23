@@ -39,7 +39,7 @@
 <b>vals</b> -- массив значений, которые связаны индексами: под ключом <b>keys[i]</b>
 хранится значение <b>vals[i]</b>.</p>
 <h2>Задать значение по ключу</h2>
-<p>Логика работы следующая: если ключ <b>key</b>существует, то надо поменять значение <b>value</b>, которое к нему
+<p>Логика работы следующая: если ключ <b>key</b> существует, то надо поменять значение <b>value</b>, которое к нему
 привязано. Если ключа ещё нет -- создать ключ <b>key</b> и привязать к нему значение <b>value</b>.</p>
 <~c~>
 void set(std::string *keys, int *vals, int &n, std::string key, int value)
@@ -59,9 +59,49 @@ void set(std::string *keys, int *vals, int &n, std::string key, int value)
     n += 1;
 };
 <~/c~>
+
+<~pa~>
+procedure set(var keys : array [0..MAX_LEN] of string, var vals : array [0..MAX_LEN] of integer,
+    var n : integer, key : string, value : integer);
+begin
+    {Надо пройти по всем элементам ассоциативного массива}
+    for i := 0 to n - 1 do
+        if (keys[i] = key) then
+        begin
+            {Если ключ существует}
+            vals[i] := value;
+            exit(0);
+        end;
+    {Если ключа не существует}
+    vals[n] := value;
+    keys[n] := key;
+    {Надо не забыть увеличить размер ассоциативного массива}
+    n := n + 1;
+end;
+<~/pa~>
+
+<~py~>
+#название set является ключевым словом языка
+def _set_(keys, vals, key, value):
+    #Надо пройти по всем элементам ассоциативного массива
+    for i in range(len(keys)):
+        if keys[i] == key:
+            #Если ключ существует
+            vals[i] = value
+            return 0
+    #Если ключа не существует
+    vals.append(value)
+    keys.append(key)
+    #Так как длина массивов всегда одинакова, оба значения стоят на последнем месте.
+    #Следовательно, всегда будут соответствовать друг другу: по keys[i] можно получить
+    #vals[i].
+<~/py~>
+
+
 <h2>Удалить элемент</h2>
 <p>Принцип следующий: найти элемент с ключом <b>key</b>, обменять его местами с последним элементом словаря (
 который находится в ячейке <b>n</b> - 1) и уменьшить длину ассоциативного массива на один.</p>
+
 <~c~>
 void rem(std::string *keys, int *vals, int &n, std::string key)
 {
@@ -85,6 +125,48 @@ void rem(std::string *keys, int *vals, int &n, std::string key)
 };
 <~/c~>
 
+<~pa~>
+procedure rem(var keys : array [0..MAX_LEN] of string, 
+    var vals : array [0..MAX_LEN] of integer, var n : integer, key : string);
+var
+    {Эти переменные нужны для совершения обмена местами двух переменных}
+    tmp1 : integer;
+    tmp2 : string;
+begin
+    {Проходим по всем элементам ассоциативного массива}
+    for i := 0 to n - 1 do
+        if (keys[i] = key) then
+        begin
+            {Когда находим удаляемый ключ}
+            tmp1 := vals[i];
+            vals[i] := vals[n - 1];
+            vals[n - 1] := tmp1;
+            {Меняем местами vals[i] и vals[n-1]}
+            tmp2 := keys[i];
+            keys[i] := keys[n - 1];
+            keys[n - 1] := tmp2;
+            {Меняем местами keys[i] и keys[n-1]}
+            {И не забываем уменьшить длину ассоциативного массива:}
+            n := n - 1;
+            exit(0);
+        end;
+end;
+<~/pa~>
+
+<p>Эта функция проще всего реализуется на языке Python:</p>
+
+<~py~>
+def(keys, vals, key):
+    #Проходим по всем элементам ассоциативного массива
+    for i in range(len(keys)):
+        if (keys[i] == key):
+            #Когда находим удаляемый ключ
+            keys.pop(i)
+            vals.pop(i)
+            #Собственно, удаляем его встроенным методом массива.
+<~/py~>
+
+
 <h2>Узнать, существует ли ключ</h2>
 <p>Надо пройти по ассоциативному массиву, сравнивая все ключи с искомым <b>key</b>. Совпадают -- вернуть
 истину. Если по выходе из массива функция ещё не вернула истину, то такой ключ в массиве отсутствует.
@@ -99,8 +181,27 @@ bool exist(std::string *keys, int n, std::string key)
 };
 <~/c~>
 
+<~pa~>
+procedure exist(var keys : array [0..MAX_LEN] of string, n : integer, key : string) : boolean;
+begin
+    for i := 0 to n - 1 do
+        if (keys[i] = key) then
+            exist := true;
+     exist := false;
+end;
+<~/pa~>
+
+<~py~>
+def exist(keys, key):
+    for i in keys:
+        if i == key:
+            return True
+    return False
+<~/py~>
+
 <h2>Очистить ассоциативный массив</h2>
 <p>Тут всё просто. Надо установить длину массива в ноль.</p>
+
 <~c~>
 void clear(int &n)
 {
@@ -108,6 +209,21 @@ void clear(int &n)
 };
 <~/c~>
 
+<~pa~>
+function clear(var n : integer);
+begin
+    n := 0;
+end;
+<~/pa~>
+
+<p>В Python, так как в нём есть определённые сложности с изменением
+целочисленной переменной изнутри функции, мы просто очищаем оба массива:</p>
+
+<~py~>
+def clear(vals, keys):
+    vals.clear()
+    keys.clear()
+<~/py~>
 
 <h2>Получить значение по ключу</h2>
 <p>Надо пройти по массиву ключей. Если встретится совпадающий с искомым <b>key</b>, то надо
@@ -122,6 +238,28 @@ int get(std::string *keys, int *vals, int n, std::string key)
             return vals[i];
     //Если ключ не был найден, то аварийно завершим функцию.
     exit(1);
+};
+<~/c~>
+
+<~pa~>
+function get(var keys : array [0..MAX_LEN] of string, 
+    var vals : array [0..MAX_LEN] of integer, n : integer, key : string) : integer;
+begin
+    for i := 0 to n - 1 do
+        if (keys[i] = key) then
+            get := vals[i];
+    {Если ключ не был найден, то аварийно завершим функцию.}
+    exit(1);
+end;
+<~/pa~>
+
+<~py~>
+def get(keys, vals, key):
+    for i in range(len(keys)):
+        if (keys[i] == key):
+            return vals[i]
+    #Если ключ не был найден, то аварийно завершим функцию.
+    raise ValueError('Ключ не найден!')
 };
 <~/c~>
 
@@ -147,7 +285,7 @@ std::cout << get(keys, vals, n, "Ivan");
 //Удаление ключей из ассоциативного массива
 rem(keys, vals, n, "Ivan");
 rem(keys, vals, n, "Egor");
-rem(keys, vals, n, "Anton  ");
+rem(keys, vals, n, "Anton");
 
 //Повторное удаление ключа не "уронит" программу
 rem(keys, vals, n, "Ivan");
@@ -155,6 +293,66 @@ rem(keys, vals, n, "Ivan");
 //Проверка на существования ключа (вернёт ложь)
 std::cout << "\nIvan:" << exist(keys, n, "Ivan");
 <~/c~>
+
+<~pa~>
+{Очистка ассоциативного массива}
+clear(n);
+
+{Добавление нескольких пар "ключ-значение"}
+set(keys, vals, n, "Ivan", 213);
+set(keys, vals, n, "Anton", 21);
+set(keys, vals, n, "Egor", 321);
+
+{Замена значения для одного из ключей}
+set(keys, vals, n, "Ivan", 1234);
+
+{Проверка на существования ключа (вернёт истину)}
+println("Ivan: ", exist(keys, n, "Ivan"));
+
+{Получение значения по ключу}
+println(get(keys, vals, n, "Ivan"));    
+
+{Удаление ключей из ассоциативного массива}
+rem(keys, vals, n, "Ivan");
+rem(keys, vals, n, "Egor");
+rem(keys, vals, n, "Anton");
+
+{Повторное удаление ключа не "уронит" программу}
+rem(keys, vals, n, "Ivan");
+
+{Проверка на существования ключа (вернёт ложь)}
+println("Ivan: ", exist(keys, n, "Ivan"));
+<~/pa~>
+
+<~py~>
+#Очистка ассоциативного массива
+clear(vals, keys)
+
+#Добавление нескольких пар "ключ-значение"
+_set_(keys, vals, "Ivan", 213)
+_set_(keys, vals, "Anton", 21)
+_set_(keys, vals, "Egor", 321)
+
+#Замена значения для одного из ключей
+_set_(keys, vals, "Ivan", 1234)
+
+#Проверка на существования ключа (вернёт истину)
+print("Ivan:", exist(keys, "Ivan"))
+
+#Получение значения по ключу
+print(get(keys, vals, "Ivan"))
+
+#Удаление ключей из ассоциативного массива
+rem(keys, vals, "Ivan")
+rem(keys, vals, "Egor")
+rem(keys, vals, "Anton")
+
+#Повторное удаление ключа не "уронит" программу
+rem(keys, vals, "Ivan")
+
+#Проверка на существования ключа (вернёт ложь)
+print("Ivan:", exist(keys, "Ivan"))
+<~/py~>
 
 <p>Итак, как вы видите, написать на каком-либо языке ассоциативный массив
 не представляет особой трудности, а для решения немалого количества задач
