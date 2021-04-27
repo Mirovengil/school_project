@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <title>Сдвиг массива</title>
+        <link rel="stylesheet"href="./css/style_1000_inf.css">
+        <link rel="stylesheet"href="./css/style_600_1000.css">
+        <link rel="stylesheet"href="./css/style_0_600.css">
+        <meta name = "viewport"content="width=device-width,initial-scale=1">
+        
+        <script src='http://yastatic.net/highlightjs/8.2/highlight.min.js'/></script>
+        <script type='text/javascript'>hljs.initHighlightingOnLoad();</script>
+        <link href='http://yastatic.net/highlightjs/8.2/styles/solarized_light.min.css' rel='stylesheet'/>
+    </head>
+    <body>
+<header>
+    <a class = "logo" href = "./index.html"></a>
+    <a class = "menu_icon" onclick = "show_menu()"></a>
+    <p class = "sitename" id = "up">Algor<a class = "fake">i</a>thm</p>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</header>
+<main>
+<nav class = "nav" id = "menu">
+<p class = "navpar">Навигация</p>
+<a href="./index.html" class = "readdr">Главная страница</a>
+<a href="./about.html" class = "readdr">О нас</a>
+<a href="./arrays.html" class = "readdr">Массивы</a>
+<a href="./based.html" class = "readdr">Базовые алгоритмы</a>
+<a href="./integer.html" class = "readdr">Алгоритмы обработки чисел</a>
+<a href="./struct.html" class = "readdr">Структуры данных</a>
+</nav>
+<h1>Сдвиг массива</h1>
+<p>Итак, сдвиг массива c использованием второго массива. Его предпочтительно делать в цикле, вычисляя для каждого элемента его новую позицию. Казалось бы,
+что может быть проще? Просто прибавить к старому индексу некоторое значение. </p>
+<p>Пусть <b>i</b> - индекс элемента в старом массиве, <b>new_i</b> - индекс этого же элемента в новом массиве, а <b>move</b> - на сколько
+надо сдвинуть элемент. Тогда, казалось бы</p>
+<p class = "lang">C++</p>
+<pre><code class = "C++">
+new_i = i + move;
+</code></pre>
+<p class = "lang">Pascal</p>
+<pre><code class = "pascal">
+new_i := i + move;
+</code></pre>
+<p class = "lang">Python</p>
+<pre><code class = "Python">
+new_i = i + move
+</code></pre>
+<p>Но что будет, если i + move больше, чем размер массива? Тогда отсчёт продолжится с начала массива:</p>
+<img src = "./img/arrays/001.png">
+<p>А в описанной выше реализации произойдёт выход за границу массива. Что делать?</p>
+<p>Вопрос "на засыпку": какая операция позволяет
+превратить индекс, равный индексу последнего элемента плюс один, т.е., равный длине массива, в ноль?</p>
+<p>Ответ: остаток от деления!</p>
+<p>Получается такой код (пусть <b>n</b> - длина массива)</p>
+<p class = "lang">C++</p>
+<pre><code class = "C++">
+new_i = (i + move) % n;
+</code></pre>
+<p class = "lang">Pascal</p>
+<pre><code class = "pascal">
+new_i := (i + move) <b>mod</b> n;
+</code></pre>
+<p class = "lang">Python</p>
+<pre><code class = "Python">
+new_i = (i + move) % n
+</code></pre>
+<p>Эта реализация обрабатывает также случай, когда сдвиг больше длины массива, т.к. остаток от деления гарантирует, что new_i < n.</p>
+<p>Казалось бы, код готов. Но, как гласит анекдот, есть один нюанс. Что будет, если сдвиг идёт не вправо? Правильно,
+он будет иметь отрицательный размер. В принципе, в этом нет ничего страшного. Но теперь могут появиться отрицательные индексы,
+которые не дружат с большинством языков. Должно произойти следущее:</p>
+<img src = "./img/arrays/002.png">
+<p>Снова вопрос "от Жака Фреско": как превратить индекс, равный минус одному, в индекс, равный n-1, т.е, в последний
+индекс массива? Правильно, прибавить n. (если кто-то не в силах посчитать, то -1 + n = n - 1)</p>
+<p class = "lang">C++</p>
+<pre><code class = "C++">
+new_i = (i + move + n) % n;
+</code></pre>
+<p class = "lang">Pascal</p>
+<pre><code class = "pascal">
+new_i := (i + move + n) <b>mod</b> n;
+</code></pre>
+<p class = "lang">Python</p>
+<pre><code class = "Python">
+new_i = (i + move + n) % n
+</code></pre>
+<p>Реализация подсчёта индекса почти завершена. Если i + move + n >= 0, то всё работает корректно. Осталось обработать только один случай:
+что будет, если сдвиг отрицателен и его размер по модулю больше n? Тогда опять получится отрицательное число. Самый простой способ обработать
+этот случай - сделать move меньшим, чем n.</p>
+<p>Вопрос: какая операция позволяет это сделать?</p>
+<p>Ответ: остаток от деления! Надо применить его к сдвигу. Получается такой код:</p>
+<p class = "lang">C++</p>
+<pre><code class = "C++">
+move = move % n;
+new_i = (i + move + n) % n;
+</code></pre>
+<p class = "lang">Pascal</p>
+<pre><code class = "pascal">
+move := move <b>mod</b> n;
+new_i := (i + move + n) <b>mod</b> n;
+</code></pre>
+<p class = "lang">Python</p>
+<pre><code class = "Python">
+move = move % n
+new_i = (i + move + n) % n
+</code></pre>
+<p>Отлично, вычисление нового индекса написано! И написано весьма красиво: нет ни одного условного оператора.</p>
+<p>Теперь дело за малым: встроить сие чудо в цикл, обрабатывающий массив (пусть <b>arr1</b> — первый массив, а 
+<b>arr2</b> — второй):</p>
+<p class = "lang">C++</p>
+<pre><code class = "C++">
+move = move % n;
+for (int i = 0; i < n; ++i)
+{
+    int new_i = (i + move + n) % n;
+    arr2[new_i] = arr1[i];
+};
+</code></pre>
+<p class = "lang">Pascal</p>
+<pre><code class = "pascal">
+move := move <b>mod</b> n;
+for i := 0 to n - 1 do
+begin
+    new_i := (i + move + n) <b>mod</b> n;
+    arr2[new_i] := arr1[i];
+end;
+</code></pre>
+<p class = "lang">Python</p>
+<pre><code class = "Python">
+move = move % n
+for i in range(n):
+    new_i = (i + move + n) % n
+    arr2[new_i] = arr1[i]
+</code></pre>    
+<p>Есть два важных нюанса в использовании этого алгоритма. Во-первых, выполнять деление сдвига с остатком
+следует вне цикла, чтобы не совершать лишних операций. Во-вторвых, рекомендуется использовать (и вообще во всех
+алгоритмах на языке Pascal) стандартную индексацию массива: это избавляет от многих сложностей.</p>
+<a href="./arrays.html" class = "btn">Массивы</a>
+<a href = "./about.html" class = "lefttext">©Все права защищены</a></main>
+<footer>
+    <a href = "#up" class = "footer"></a>
+</footer>
+    </body>
+</html>
+
+<!-- Да, я знаю, что это — поздравление самого себя с 21 марта, но благодаря тому, что сайт будет абсолютно статический — почему бы и нет? -->
+<!-- Особенно, если учесть, что JS будет только здесь и в тестах — проблем быть не должно от слова "совсем". -->
+<script>
+    function show_menu()
+    {
+        let menu = document.getElementById("menu");
+        if (menu.style.display != "block")
+        {
+            menu.style.display = "block";
+        }
+        else
+        {
+            menu.style.display = "none";
+        };
+    };
+</script>

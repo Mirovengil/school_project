@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <title>Структуры данных</title>
+        <link rel="stylesheet"href="./css/style_1000_inf.css">
+        <link rel="stylesheet"href="./css/style_600_1000.css">
+        <link rel="stylesheet"href="./css/style_0_600.css">
+        <meta name = "viewport"content="width=device-width,initial-scale=1">
+        
+        <script src='http://yastatic.net/highlightjs/8.2/highlight.min.js'/></script>
+        <script type='text/javascript'>hljs.initHighlightingOnLoad();</script>
+        <link href='http://yastatic.net/highlightjs/8.2/styles/solarized_light.min.css' rel='stylesheet'/>
+    </head>
+    <body>
+<header>
+    <a class = "logo" href = "./index.html"></a>
+    <a class = "menu_icon" onclick = "show_menu()"></a>
+    <p class = "sitename" id = "up">Algor<a class = "fake">i</a>thm</p>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</header>
+<main>
+<nav class = "nav" id = "menu">
+<p class = "navpar">Навигация</p>
+<a href="./index.html" class = "readdr">Главная страница</a>
+<a href="./about.html" class = "readdr">О нас</a>
+<a href="./arrays.html" class = "readdr">Массивы</a>
+<a href="./based.html" class = "readdr">Базовые алгоритмы</a>
+<a href="./integer.html" class = "readdr">Алгоритмы обработки чисел</a>
+<a href="./struct.html" class = "readdr">Структуры данных</a>
+</nav>
+<h1>Структуры данных</h1>
+<p>Здесь собраны статьи, посвящённые созданию различных структур данных.
+Это — очень большой раздел программирования, который подробно изучается
+в профильных ВУЗ'ах, а в школах, тем более — в средних, почти не затрагивается.</p>
+<p>Однако же он очень интересный и полезный: без помощи структур данных программирование
+в промышленных масштабах развивалось бы гораздо медленнее. Поэтому здесь собраны статьи о простейших
+структурах данных с целью ознакомления. Написать их упрощённую  версию хватит и возможностей 
+ученика средней школы.</p>
+<a href="./stack.html" class = "btn">Стек</a>
+<a href="./dict.html" class = "btn">Ассоциативный массив</a>
+<a href = "./about.html" class = "lefttext">©Все права защищены</a></main>
+<footer>
+    <a href = "#up" class = "footer"></a>
+</footer>
+    </body>
+</html>
+
+<!-- Да, я знаю, что это — поздравление самого себя с 21 марта, но благодаря тому, что сайт будет абсолютно статический — почему бы и нет? -->
+<!-- Особенно, если учесть, что JS будет только здесь и в тестах — проблем быть не должно от слова "совсем". -->
+<script>
+    function show_menu()
+    {
+        let menu = document.getElementById("menu");
+        if (menu.style.display != "block")
+        {
+            menu.style.display = "block";
+        }
+        else
+        {
+            menu.style.display = "none";
+        };
+    };
+</script>

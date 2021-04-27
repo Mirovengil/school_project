@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <title>Разбиение числа на цифры</title>
+        <link rel="stylesheet"href="./css/style_1000_inf.css">
+        <link rel="stylesheet"href="./css/style_600_1000.css">
+        <link rel="stylesheet"href="./css/style_0_600.css">
+        <meta name = "viewport"content="width=device-width,initial-scale=1">
+        
+        <script src='http://yastatic.net/highlightjs/8.2/highlight.min.js'/></script>
+        <script type='text/javascript'>hljs.initHighlightingOnLoad();</script>
+        <link href='http://yastatic.net/highlightjs/8.2/styles/solarized_light.min.css' rel='stylesheet'/>
+    </head>
+    <body>
+<header>
+    <a class = "logo" href = "./index.html"></a>
+    <a class = "menu_icon" onclick = "show_menu()"></a>
+    <p class = "sitename" id = "up">Algor<a class = "fake">i</a>thm</p>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</header>
+<main>
+<nav class = "nav" id = "menu">
+<p class = "navpar">Навигация</p>
+<a href="./index.html" class = "readdr">Главная страница</a>
+<a href="./about.html" class = "readdr">О нас</a>
+<a href="./arrays.html" class = "readdr">Массивы</a>
+<a href="./based.html" class = "readdr">Базовые алгоритмы</a>
+<a href="./integer.html" class = "readdr">Алгоритмы обработки чисел</a>
+<a href="./struct.html" class = "readdr">Структуры данных</a>
+</nav>
+<h1>Разбиение числа на цифры</h1>
+<p>Итак, вам понадобилось узнать, из каких чисел состоит число, и, возможно,
+проделать с ними некие операции.</p>
+<p>Для реализации этого алгоритма надо понять две несложные вещи.</p>
+<p>Первое — как получить последнюю цифру числа. Последняя цифра числа всегда
+меньше десяти. Остаток от деления на десять (операция <b>mod</b> или <b>%</b>) 
+всегда оставит только цифру, меньшую десяти. То есть, для любого числа <b>n</b></p>
+<p class = "lang"><b>C++</b></p><pre><code class = "C++">
+int last = n % 10;
+</code></pre>
+<p class = "lang"><b>Pascal</b></p><pre><code>
+last := n mod 10;
+</code></pre>
+<p class = "lang"><b>Python</b></p><pre><code class = "Python">
+last = n % 10
+</code></pre>
+<p>В переменной <b>last</b> будет храниться последняя цифра числа <b>n</b>.</p>
+<p>Но нам-то надо получить все цифры числа <b>n</b>! Для этого надо научиться
+"отрезать" последнюю цифру числа.</p>
+<p>Если поделить число на десять, то мы переместим запятую на один знак влево.
+Казалось бы, операция не подходит. Но если оставить от числа только целую часть — 
+мы достигнем желаемого результата: последняя цифра "уйдёт". Чтобы не морочить себе
+голову преобразованиями дробной части, просто будем работать в целых числах:</p>
+<p class = "lang"><b>C++</b></p><pre><code class = "C++">
+int last = n % 10;
+n = n / 10;
+</code></pre>
+<p class = "lang"><b>Pascal</b></p><pre><code>
+last := n mod 10;
+n := n div 10;
+</code></pre>
+<p class = "lang"><b>Python</b></p><pre><code class = "Python">
+last = n % 10
+n = n // 10
+</code></pre>
+<p>В принципе, алгоритм почти готов. Осталось добавить ему одно свойство — универсальность:
+ведь заранее может быть неизвестно, сколько цифр в числе. Поэтому будем использовать цикл с предусловием.</p>
+<p>Если число меньше десяти, то при целочисленном делении на десять оно даст 0. Это и будет условием выхода:</p>
+<p class = "lang"><b>C++</b></p><pre><code class = "C++">
+while (n > 0)
+{
+    int last = n % 10;
+    n = n / 10;
+    //А здесь с цифрами можно выполнять операции
+    //К примеру — добавить их в массив или напечатать
+};
+</code></pre>
+<p class = "lang"><b>Pascal</b></p><pre><code>
+while (n > 0) do
+begin
+    last := n % 10;
+    n := n div 10;
+    {А здесь с цифрами можно выполнять операции}
+    {К примеру — добавить их в массив или напечатать}
+end;
+</code></pre>
+<p class = "lang"><b>Python</b></p><pre><code class = "Python">
+while n > 0:
+    last = n % 10
+    n = n // 10
+    #А здесь с цифрами можно выполнять операции
+    #К примеру — добавить их в массив или напечатать
+</code></pre>
+<p>Обратите внимание, что так как мы постоянно берём последнюю цифру числа, то 
+все цифры будут идти в обратном порядке.</p>
+<a href="./integer.html" class = "btn">Алгоритмы обработки чисел</a>
+<a href = "./about.html" class = "lefttext">©Все права защищены</a></main>
+<footer>
+    <a href = "#up" class = "footer"></a>
+</footer>
+    </body>
+</html>
+
+<!-- Да, я знаю, что это — поздравление самого себя с 21 марта, но благодаря тому, что сайт будет абсолютно статический — почему бы и нет? -->
+<!-- Особенно, если учесть, что JS будет только здесь и в тестах — проблем быть не должно от слова "совсем". -->
+<script>
+    function show_menu()
+    {
+        let menu = document.getElementById("menu");
+        if (menu.style.display != "block")
+        {
+            menu.style.display = "block";
+        }
+        else
+        {
+            menu.style.display = "none";
+        };
+    };
+</script>

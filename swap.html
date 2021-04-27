@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <title>Обмен двух переменных значениями</title>
+        <link rel="stylesheet"href="./css/style_1000_inf.css">
+        <link rel="stylesheet"href="./css/style_600_1000.css">
+        <link rel="stylesheet"href="./css/style_0_600.css">
+        <meta name = "viewport"content="width=device-width,initial-scale=1">
+        
+        <script src='http://yastatic.net/highlightjs/8.2/highlight.min.js'/></script>
+        <script type='text/javascript'>hljs.initHighlightingOnLoad();</script>
+        <link href='http://yastatic.net/highlightjs/8.2/styles/solarized_light.min.css' rel='stylesheet'/>
+    </head>
+    <body>
+<header>
+    <a class = "logo" href = "./index.html"></a>
+    <a class = "menu_icon" onclick = "show_menu()"></a>
+    <p class = "sitename" id = "up">Algor<a class = "fake">i</a>thm</p>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</header>
+<main>
+<nav class = "nav" id = "menu">
+<p class = "navpar">Навигация</p>
+<a href="./index.html" class = "readdr">Главная страница</a>
+<a href="./about.html" class = "readdr">О нас</a>
+<a href="./arrays.html" class = "readdr">Массивы</a>
+<a href="./based.html" class = "readdr">Базовые алгоритмы</a>
+<a href="./integer.html" class = "readdr">Алгоритмы обработки чисел</a>
+<a href="./struct.html" class = "readdr">Структуры данных</a>
+</nav>
+<h1>Обмен двух переменных значениями</h1>
+<p>Итак, есть две переменные. Надо обменять их значения местами. То есть, если переменная <b>a</b> до выполнения алгортма
+имела значение <b>v1</b> и переменная <b>b</b> до имела значение <b>v2</b>, то после выполнения алгоритма переменная 
+<b>a</b> должна хранить значение <b>v2</b>, а переменная <b>b</b>, соответственно, - значение <b>v1</b>.</p>
+
+<p>Задача, казалось бы, простейшая. Но есть несколько способов реализации выполняющего её алгоритма, о некоторых вы и не подозревали.</p>
+
+<h2>Реализация с использованием третьей, дополнительной переменной</h2>
+
+<p>Давайте попробуем реализовать алгоритм "в лоб":</p>
+<p class = "lang">C++</p>
+<pre><code class = "C++">
+a = b;
+b = a;
+</code></pre>
+<p class = "lang">Pascal</p>
+<pre><code class = "Pascal">
+a := b;
+b := a;
+</code></pre>
+<p class = "lang">Python</p>
+<pre><code class = "Python">
+a = b
+b = a
+</code></pre>
+
+<p>Но есть один нюанс. Обе переменные будут хранить значение <b>v2</b>:</p>
+
+<img src = "./img/based/001.png">
+
+<p>Давайте заведём вторую переменную и попробуем реализовать алгоритм с её использованием:</p>
+
+<img src = "./img/based/002.png">
+
+<p>Теперь его будет совсем несложно реализовать на необходимом языке:</p>
+<p class = "lang">C++</p>
+<pre><code class = "C++">
+c = a;
+a = b;
+b = c;
+</code></pre>
+<p class = "lang">Pascal</p>
+<pre><code class = "Pascal">
+c := a;
+a := b;
+b := c;
+</code></pre>
+<p class = "lang">Python</p>
+<pre><code class = "Python">
+c = a
+a = b
+b = c
+</code></pre>
+
+<p>Это - самый простой и универсальный способ обменять две переменные значениями.
+Но существуют и ещё несколько, без использования третьей (это может пригодиться, например, 
+на олимпиаде), которые работают в конкретных случаях. Далее они будут разобраны. Если
+у вас нет табу на третью переменную, то дальше можно не читать.</p>
+
+<a href="./based.html" class = "readdr">Базовые алгоритмы</a>
+
+<h2>Реализация через битовые операции</h2>
+
+<p>Для понимания того, что будет дальше, необходимо владеть битовыми операциями хотя бы на базовом уровне.</p>
+
+<img src = "./img/based/003.png">
+
+<p>Это основывается на двух свойствах оператора XOR (исключающее ИЛИ):</p>
+
+<img src = "./img/based/004.png">
+
+<p>Реализуется это чудо на основных языках безо всяких проблем, но неприменимо к строковым переменным, а только к числам.
+Зато оно работает быстрее, чем обмен через третью переменную.</p>
+
+<p class = "lang">C++</p>
+<pre><code class = "C++">
+a = a ^ b;
+b = a ^ b;
+a = a ^ b;
+</code></pre>
+<p class = "lang">Pascal</p>
+<pre><code class = "Pascal">
+a := a <b>xor</b> b;
+b := a <b>xor</b> b
+a := a <b>xor</b> b;
+</code></pre>
+<p class = "lang">Python</p>
+<pre><code class = "Python">
+a = a^b
+b = a^b
+b = a^b
+</code></pre>
+
+
+<h2>Реализация через арифметику</h2>
+
+<p>Этот способ для понимания требует владения арифметикой на уровне 5-6 классов:<br>
+a = a + b<br>
+b = a - b = (a + b) - b = a + b - b = a<br>
+a = a - b = (a + b) - a = b + a - a = b
+</p>
+
+<p>В реализации его также нет никаких сложностей:</p>
+
+<p class = "lang">C++</p>
+<pre><code class = "C++">
+a = a + b;
+b = a - b;
+a = a - b;
+</code></pre>
+<p class = "lang">Pascal</p>
+<pre><code class = "Pascal">
+a := a + b;
+b := a - b;
+a := a - b;
+</code></pre>
+<p class = "lang">Python</p>
+<pre><code class = "Python">
+a = a + b
+b = a - b
+a = a - b
+</code></pre>
+
+<h2>Реализация через средства языка Python</h2>
+
+<p>Язык Python обладает встроенной в синтаксис возможностью выполнения обмена двух переменных значениями: </p>
+<p class = "lang">Python</p>
+<pre><code class = "Python">
+a, b = b, a
+</code></pre>
+<p>Всё! Готово. Но стоит помнить, что Python, вследствие его интерпретируемости, обладает невысокой скоростью
+быстродействие, следовательно, его применение в олимпиадах есть вопрос неоднозначный. Однако вне олимпиад
+рекомендуется использовать этот способ, как наиболее краткий и простой.</p>
+
+<a href="./based.html" class = "readdr">Базовые алгоритмы</a>
+<a href = "./about.html" class = "lefttext">©Все права защищены</a></main>
+<footer>
+    <a href = "#up" class = "footer"></a>
+</footer>
+    </body>
+</html>
+
+<!-- Да, я знаю, что это — поздравление самого себя с 21 марта, но благодаря тому, что сайт будет абсолютно статический — почему бы и нет? -->
+<!-- Особенно, если учесть, что JS будет только здесь и в тестах — проблем быть не должно от слова "совсем". -->
+<script>
+    function show_menu()
+    {
+        let menu = document.getElementById("menu");
+        if (menu.style.display != "block")
+        {
+            menu.style.display = "block";
+        }
+        else
+        {
+            menu.style.display = "none";
+        };
+    };
+</script>

@@ -1,4 +1,0 @@
-</main>
-<footer>
-    <a href = "#up" class = "footer"></a>
-</footer>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <title>Стек</title>
+        <link rel="stylesheet"href="./css/style_1000_inf.css">
+        <link rel="stylesheet"href="./css/style_600_1000.css">
+        <link rel="stylesheet"href="./css/style_0_600.css">
+        <meta name = "viewport"content="width=device-width,initial-scale=1">
+        
+        <script src='http://yastatic.net/highlightjs/8.2/highlight.min.js'/></script>
+        <script type='text/javascript'>hljs.initHighlightingOnLoad();</script>
+        <link href='http://yastatic.net/highlightjs/8.2/styles/solarized_light.min.css' rel='stylesheet'/>
+    </head>
+    <body>
+<header>
+    <a class = "logo" href = "./index.html"></a>
+    <a class = "menu_icon" onclick = "show_menu()"></a>
+    <p class = "sitename" id = "up">Algor<a class = "fake">i</a>thm</p>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</header>
+<main>
+<nav class = "nav" id = "menu">
+<p class = "navpar">Навигация</p>
+<a href="./index.html" class = "readdr">Главная страница</a>
+<a href="./about.html" class = "readdr">О нас</a>
+<a href="./arrays.html" class = "readdr">Массивы</a>
+<a href="./based.html" class = "readdr">Базовые алгоритмы</a>
+<a href="./integer.html" class = "readdr">Алгоритмы обработки чисел</a>
+<a href="./struct.html" class = "readdr">Структуры данных</a>
+</nav>
+<h1>Стек</h1>
+<p>Стек — структура данных, которая достаточно часто используется для реализации 
+различных алгоритмов. Самый частый пример его использования — реализация
+"истории", которая хранит действия от последнего к первому и с помощью которой
+можно совершать "откаты" на определённое количество шагов назад. Такая "история"
+есть в любом редакторе, а реализовать её проще всего через стек.</p>
+<p>В большинстве современных языков стек реализован внутренними средствами, 
+однако очень важно понимать, как он работает, поэтому — давайте напишем его самостоятельно!</p>
+<p>Для реализации стека сперва неплохо бы понять, что он из себя представляет. Это есть структура
+данных, реализующая принцип <b>LIFO</b> — <b>L</b>ast <b>I</b>n <b>F</b>irst <b>O</b>ut.
+Если перевести с импортного на русский, то получится что-то вроде <i>Последний Вошёл — Первый Вышел</i>.
+То есть, при запросе на получение элемента из стека вы получите тот, который был добавлен в стек последним.</p>
+<p>Возможно, кажется сложным, поэтому давайте рассмотрим на простом и наглядном примере:</p>
+<img src = "img/struct/001.png">
+<img src = "img/struct/002.png">
+<img src = "img/struct/003.png">
+<img src = "img/struct/004.png">
+<img src = "img/struct/003.png">
+<img src = "img/struct/004.png">
+<p>Стопка тарелок или книг — чем не пример стека? Чтобы достать что-то снизу, необходимо сперва поднять
+верхнюю, иначе вас постигнет судьба Вицина из "Операции Ы". Важно: <b>при обращении за элементом, стек
+всегда вернёт тот, который был добавлен последним!!</b></p>
+<p>В принципе, в написании стека нет ничего сложного. Мы будем использовать статические массивы 
+(так как динамические в языках-гигантах очень разнятся по быстродействию и удобству, а статические
+почти везде одинаковы) и функции с переменными (так как ООП отсутствует в программах 7-9 классов)
+для реализации стека. Да, она будет весьма примитивной. Зато своя и понятная!</p>
+<p>Итак, поехали. Мы будем использовать массив <b>arr</b> для хранения данных стека и целочисленную
+переменную <b>length</b> для хранения текущей длины стека.</p>
+<p>Базовый стек должен уметь совершать следующие операции:
+<ul>
+    <li>Очистка стека;</li>
+    <li>Добавление элемента в стек</li>
+    <li>Получение последнего элемента из стека</li>
+    <li>Удаление последнего элемента из стека</li>
+</ul>
+</p>
+<h2>Очистка стека</h2>
+<p class = "lang"><b>C++</b></p><pre><code class = "C++">
+void clear(int &length)
+{
+    length = 0;
+};
+</code></pre>
+<p class = "lang"><b>Pascal</b></p><pre><code>
+procedure clean(var length : integer);
+begin
+    length := 0;
+end;
+</code></pre>
+<p>К сожалению, функции в языке Python не могут изменять параметры, которые не являются
+сложными элементами (массивом, словарём, множеством и т.п.), поэтому будем использовать
+более банальные методы:</p>
+<p class = "lang"><b>Python</b></p><pre><code class = "Python">
+length = 0 #Обнуление стека
+</code></pre>
+<h2>Добавление нового элемента в стек</h2>
+<p>Первый элемент в массиве лежит в ячейке с индексом ноль. Изначальная длина стека — ноль.
+Следовательно, надо <b>сначала</b> "положить" элемент в последнюю ячейку стека, а потом уже 
+увеличить длину стека:</p>
+<p class = "lang"><b>C++</b></p><pre><code class = "C++">
+void add(int *mass, int &length, int value)
+{
+    arr[length] = value;
+    length += 1;
+};
+</code></pre>
+<p class = "lang"><b>Pascal</b></p><pre><code>
+procedure add(var arr : array [0..N] of integer, var length : integer, value : integer);
+begin
+    arr[length] := value;
+    length := length + 1;
+end;
+</code></pre>
+<p>Python же опять доставляет неудобство тем, что целое число нельзя передать по ссылке:</p>
+<p class = "lang"><b>Python</b></p><pre><code class = "Python">
+def add(arr, length, value):
+    arr[length] = value
+    length = length + 1
+    return length
+</code></pre>
+<p>Соответственно, использовать её придётся немного по-другому (далее будут примеры).</p>
+<h2>Получение последнего элемента из стека</h2>
+<p>Мы знаем, что длина стека <b>length</b> всегда на единицу больше, чем номер последнего элемента
+в нём (это следует из реализации функции <b>add</b>). Следовательно, последний элемент хранится в ячейке 
+<b>arr</b> под индексом <b>length</b> - 1. Но важно не забыть проверку, что <b>length</b> > 0. Если
+<b>length</b> равно нулю, то элементов в стеке нет — надо вернуть левое значение/ноль/исключение/что-то ещё:</p>
+<p class = "lang"><b>C++</b></p><pre><code class = "C++">
+int get(int *arr, int length)
+{
+    if (length == 0)
+        exit(1); //Аварийный выход из функции
+    return arr[length - 1];
+}; 
+</code></pre>
+<p class = "lang"><b>Pascal</b></p><pre><code>
+function get(arr : array [0..N] of integer, var length : integer) : integer;
+{
+    if (length == 0) then
+        exit(1); {Аварийный выход из функции}
+    get := arr[length - 1];
+}; 
+</code></pre>
+<p class = "lang"><b>Python</b></p><pre><code class = "Python">
+def get(arr, length):
+    if length == 0:
+        raise ValueError('Стек пуст!') #Аварийный выход из функции
+    return arr[length - 1]
+</code></pre>
+<h2>Удаление последнего элемента из стека</h2>
+<p>Чтобы удалить элемент из стека, достаточно просто уменьшить его длину на один.
+Но нельзя забывать, что длина стека не может быть меньше нуля:</p>
+<p class = "lang"><b>C++</b></p><pre><code class = "C++">
+void del(int &length)
+{
+    length -= 1;
+    if (length < 0)
+        length = 0;
+};
+</code></pre>
+<p class = "lang"><b>Pascal</b></p><pre><code>
+procedure del(var length : integer);
+begin    
+    length := length - 1;
+    if (length < 0) then
+        length := 0;
+end;
+</code></pre>
+<p>Python же опять доставляет неудобство тем, что целое число нельзя передать по ссылке:</p>
+<p class = "lang"><b>Python</b></p><pre><code class = "Python">
+def del(length):
+    length -= 1
+    if length < 0:
+        length = 0
+    return length
+</code></pre>
+<h2>Пример использования</h2>
+<p>Мы покажем следующий пример: добавить в стек числа 1, 2 и 3 и поочерёдно их извлечь, выводя на экран:</p
+<p class = "lang"><b>C++</b></p><pre><code class = "C++">
+clear(length);
+add(mass, length, 1);
+add(mass, length, 2);
+add(mass, length, 3);
+for (int i = 0; i < 3; ++i)
+{
+    std::cout << get(mass, length) << " ";
+    del(length);
+};
+</code></pre>
+<p class = "lang"><b>Pascal</b></p><pre><code>
+clear(length);
+add(mass, length, 1);
+add(mass, length, 2);
+add(mass, length, 3);
+for i := 1 to 3 do
+begin
+    print(get(mass, length), ' ');
+    del(length);
+end;
+</code></pre>
+<p class = "lang"><b>Python</b></p><pre><code class = "Python">
+length = 0
+length = add(mass, length, 1)
+length = add(mass, length, 2)
+length = add(mass, length, 3)
+for i in range(0, 3):
+    print(get(mass, length), end = ' ');
+    length = del(length)
+</code></pre>
+<p>Поздравляю! У вас есть стек. И пускай он несколько примитивен, зато 
+написан своими руками.</p>
+<a href="./struct.html" class = "btn">Структуры данных</a>
+<a href = "./about.html" class = "lefttext">©Все права защищены</a></main>
+<footer>
+    <a href = "#up" class = "footer"></a>
+</footer>
+    </body>
+</html>
+
+<!-- Да, я знаю, что это — поздравление самого себя с 21 марта, но благодаря тому, что сайт будет абсолютно статический — почему бы и нет? -->
+<!-- Особенно, если учесть, что JS будет только здесь и в тестах — проблем быть не должно от слова "совсем". -->
+<script>
+    function show_menu()
+    {
+        let menu = document.getElementById("menu");
+        if (menu.style.display != "block")
+        {
+            menu.style.display = "block";
+        }
+        else
+        {
+            menu.style.display = "none";
+        };
+    };
+</script>

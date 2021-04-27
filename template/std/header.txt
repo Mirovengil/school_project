@@ -1,9 +1,0 @@
-<header>
-    <a class = "logo" href = "./index.html"></a>
-    <a class = "menu_icon" onclick = "show_menu()"></a>
-    <p class = "sitename" id = "up">Algor<a class = "fake">i</a>thm</p>
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/styles/default.min.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-</header>
-<main>

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <title>Ассоциативный массив</title>
+        <link rel="stylesheet"href="./css/style_1000_inf.css">
+        <link rel="stylesheet"href="./css/style_600_1000.css">
+        <link rel="stylesheet"href="./css/style_0_600.css">
+        <meta name = "viewport"content="width=device-width,initial-scale=1">
+        
+        <script src='http://yastatic.net/highlightjs/8.2/highlight.min.js'/></script>
+        <script type='text/javascript'>hljs.initHighlightingOnLoad();</script>
+        <link href='http://yastatic.net/highlightjs/8.2/styles/solarized_light.min.css' rel='stylesheet'/>
+    </head>
+    <body>
+<header>
+    <a class = "logo" href = "./index.html"></a>
+    <a class = "menu_icon" onclick = "show_menu()"></a>
+    <p class = "sitename" id = "up">Algor<a class = "fake">i</a>thm</p>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</header>
+<main>
+<nav class = "nav" id = "menu">
+<p class = "navpar">Навигация</p>
+<a href="./index.html" class = "readdr">Главная страница</a>
+<a href="./about.html" class = "readdr">О нас</a>
+<a href="./arrays.html" class = "readdr">Массивы</a>
+<a href="./based.html" class = "readdr">Базовые алгоритмы</a>
+<a href="./integer.html" class = "readdr">Алгоритмы обработки чисел</a>
+<a href="./struct.html" class = "readdr">Структуры данных</a>
+</nav>
+<h1>Ассоциативный массив</h1>
+<p>Ассоциативный массив — структура данных, где каждому элементу соответствует
+свой <b>ключ</b>, по которому можно получить этот элемент.</p>
+<p>Типичный пример ассоциативного массива — обыкновенный словарь:</p>
+<img src = "img/struct/005.png">
+<p>Естественно, ключи и значения могут быть любого типа, который относится 
+к базовым: логического, целочисленного, символьного/строкового, вещественного.
+Вот ещё один пример: </p>
+<img src = "img/struct/006.png">
+<p>Важно понимать, что одинаковых ключей быть не может: значение будет
+перезаписываться. А вот одинаковых значений может быть сколько угодно:</p>
+<p><b>Такое возможно:</b></p>
+<img src = "img/struct/007.png">
+<p><b>А такое — нет:</b></p>
+<img src = "img/struct/008.png">
+<p>В целом, в реализации ассоциативного массива "в лоб" нет ничего сложного.
+Конечно, его можно написать, используя хеш-функции, но эта тема явно не
+для средней школы. Поэтому мы обойдёмся двумя статическими (динамические в 
+средней школе, увы, не проходят) массивами: <b>keys</b> — массив ключей и
+<b>vals</b> — массив значений; также нам понадобится переменная <b>n</b>, отвечающая за длину
+словаря. В языке <b>Python</b> вместо неё мы будем использовать функцию <b>len</b>, чтобы
+избежать проблем с передачей целого числа по ссылке. Всё будет несколько примитивно, зато понятно
+ — и написать и использовать вы сможете сами!</p>
+<p>Итак, давайте определим минимальный набор функций, обрабатывающих словарь:
+<ul>
+    <li>Задать значение по ключу</li>
+    <li>Удалить элемент</li>
+    <li>Узнать, существует ли элемент</li>
+    <li>Очистить ассоциативный массив</li>
+    <li>Получить значение по ключу</li>
+</ul>
+</p>
+<p>В данном примере мы будем реализовывать словарь где:
+<ul>
+    <li>Ключ — строковая переменная;</li>
+    <li>Значение — целочисленная переменная;</li>
+</ul>
+</p>
+<p>Мы имеем два массива <b>keys</b> — массив ключей и
+<b>vals</b> — массив значений, которые связаны индексами: под ключом <b>keys[i]</b>
+хранится значение <b>vals[i]</b>.</p>
+<h2>Задать значение по ключу</h2>
+<p>Логика работы следующая: если ключ <b>key</b> существует, то надо поменять значение <b>value</b>, которое к нему
+привязано. Если ключа ещё нет — создать ключ <b>key</b> и привязать к нему значение <b>value</b>.</p>
+<p class = "lang"><b>C++</b></p><pre><code class = "C++">
+void set(std::string *keys, int *vals, int &n, std::string key, int value)
+{
+    //Надо пройти по всем элементам ассоциативного массива
+    for (int i = 0; i < n; ++i)
+        if (keys[i] == key)
+        {
+            //Если ключ существует
+            vals[i] = value;
+            return;
+        };
+    //Если ключа не существует
+    vals[n] = value;
+    keys[n] = key;
+    //Надо не забыть увеличить размер ассоциативного массива
+    n += 1;
+};
+</code></pre>
+
+<p class = "lang"><b>Pascal</b></p><pre><code>
+procedure set(var keys : array [0..MAX_LEN] of string, var vals : array [0..MAX_LEN] of integer,
+    var n : integer, key : string, value : integer);
+begin
+    {Надо пройти по всем элементам ассоциативного массива}
+    for i := 0 to n - 1 do
+        if (keys[i] = key) then
+        begin
+            {Если ключ существует}
+            vals[i] := value;
+            exit(0);
+        end;
+    {Если ключа не существует}
+    vals[n] := value;
+    keys[n] := key;
+    {Надо не забыть увеличить размер ассоциативного массива}
+    n := n + 1;
+end;
+</code></pre>
+
+<p class = "lang"><b>Python</b></p><pre><code class = "Python">
+#название set является ключевым словом языка
+def _set_(keys, vals, key, value):
+    #Надо пройти по всем элементам ассоциативного массива
+    for i in range(len(keys)):
+        if keys[i] == key:
+            #Если ключ существует
+            vals[i] = value
+            return 0
+    #Если ключа не существует
+    vals.append(value)
+    keys.append(key)
+    #Так как длина массивов всегда одинакова, оба значения стоят на последнем месте.
+    #Следовательно, всегда будут соответствовать друг другу: по keys[i] можно получить
+    #vals[i].
+</code></pre>
+
+
+<h2>Удалить элемент</h2>
+<p>О принципе удаления элементов из массива вы можете прочитать в соответствующей статье:</p>
+<a href = "./deletement.html" class = "btn">Удаление элемента из массива</a>
+
+<p class = "lang"><b>C++</b></p><pre><code class = "C++">
+void rem(std::string *keys, int *vals, int &n, std::string key)
+{
+    //Проходим по всем элементам ассоциативного массива
+    for (int i = 0; i < n; ++i)
+        if (keys[i] == key)
+        {
+            //Когда находим удаляемый ключ
+            int tmp1 = vals[i];
+            vals[i] = vals[n - 1];
+            vals[n - 1] = tmp1;
+            //Меняем местами vals[i] и vals[n-1]
+            std::string tmp2 = keys[i];
+            keys[i] = keys[n - 1];
+            keys[n - 1] = tmp2;
+            //Меняем местами keys[i] и keys[n-1]
+            //И не забываем уменьшить длину ассоциативного массива:
+            n -= 1;
+            return;
+        };
+};
+</code></pre>
+
+<p class = "lang"><b>Pascal</b></p><pre><code>
+procedure rem(var keys : array [0..MAX_LEN] of string, 
+    var vals : array [0..MAX_LEN] of integer, var n : integer, key : string);
+var
+    {Эти переменные нужны для совершения обмена местами двух переменных}
+    tmp1 : integer;
+    tmp2 : string;
+begin
+    {Проходим по всем элементам ассоциативного массива}
+    for i := 0 to n - 1 do
+        if (keys[i] = key) then
+        begin
+            {Когда находим удаляемый ключ}
+            tmp1 := vals[i];
+            vals[i] := vals[n - 1];
+            vals[n - 1] := tmp1;
+            {Меняем местами vals[i] и vals[n-1]}
+            tmp2 := keys[i];
+            keys[i] := keys[n - 1];
+            keys[n - 1] := tmp2;
+            {Меняем местами keys[i] и keys[n-1]}
+            {И не забываем уменьшить длину ассоциативного массива:}
+            n := n - 1;
+            exit(0);
+        end;
+end;
+</code></pre>
+
+<p>Эта функция проще всего реализуется на языке Python:</p>
+
+<p class = "lang"><b>Python</b></p><pre><code class = "Python">
+def(keys, vals, key):
+    #Проходим по всем элементам ассоциативного массива
+    for i in range(len(keys)):
+        if (keys[i] == key):
+            #Когда находим удаляемый ключ
+            keys.pop(i)
+            vals.pop(i)
+            #Собственно, удаляем его встроенным методом массива.
+</code></pre>
+
+
+<h2>Узнать, существует ли ключ</h2>
+<p>Надо пройти по ассоциативному массиву, сравнивая все ключи с искомым <b>key</b>. Совпадают — вернуть
+истину. Если по выходе из массива функция ещё не вернула истину, то такой ключ в массиве отсутствует.
+Следовательно, надо вернуть ложь.</p>
+<p class = "lang"><b>C++</b></p><pre><code class = "C++">
+bool exist(std::string *keys, int n, std::string key)
+{
+    for (int i = 0; i < n; ++i)
+        if (keys[i] == key)
+            return true;
+    return false;
+};
+</code></pre>
+
+<p class = "lang"><b>Pascal</b></p><pre><code>
+procedure exist(var keys : array [0..MAX_LEN] of string, n : integer, key : string) : boolean;
+begin
+    for i := 0 to n - 1 do
+        if (keys[i] = key) then
+            exist := true;
+     exist := false;
+end;
+</code></pre>
+
+<p class = "lang"><b>Python</b></p><pre><code class = "Python">
+def exist(keys, key):
+    for i in keys:
+        if i == key:
+            return True
+    return False
+</code></pre>
+
+<h2>Очистить ассоциативный массив</h2>
+<p>Тут всё просто. Надо установить длину массива в ноль.</p>
+
+<p class = "lang"><b>C++</b></p><pre><code class = "C++">
+void clear(int &n)
+{
+    n = 0;
+};
+</code></pre>
+
+<p class = "lang"><b>Pascal</b></p><pre><code>
+function clear(var n : integer);
+begin
+    n := 0;
+end;
+</code></pre>
+
+<p>В Python, так как в нём есть определённые сложности с изменением
+целочисленной переменной изнутри функции, мы просто очищаем оба массива:</p>
+
+<p class = "lang"><b>Python</b></p><pre><code class = "Python">
+def clear(vals, keys):
+    vals.clear()
+    keys.clear()
+</code></pre>
+
+<h2>Получить значение по ключу</h2>
+<p>Надо пройти по массиву ключей. Если встретится совпадающий с искомым <b>key</b>, то надо
+вернуть значение под этим ключом. Если по выходе из цикла по массиву функция ещё не завершилась,
+то, очевидно, такого ключа не существует. В этом случае вы реализуем аварийный выход.</p>
+
+<p class = "lang"><b>C++</b></p><pre><code class = "C++">
+int get(std::string *keys, int *vals, int n, std::string key)
+{
+    for (int i = 0; i < n; ++i)
+        if (keys[i] == key)
+            return vals[i];
+    //Если ключ не был найден, то аварийно завершим функцию.
+    exit(1);
+};
+</code></pre>
+
+<p class = "lang"><b>Pascal</b></p><pre><code>
+function get(var keys : array [0..MAX_LEN] of string, 
+    var vals : array [0..MAX_LEN] of integer, n : integer, key : string) : integer;
+begin
+    for i := 0 to n - 1 do
+        if (keys[i] = key) then
+            get := vals[i];
+    {Если ключ не был найден, то аварийно завершим функцию.}
+    exit(1);
+end;
+</code></pre>
+
+<p class = "lang"><b>Python</b></p><pre><code class = "Python">
+def get(keys, vals, key):
+    for i in range(len(keys)):
+        if (keys[i] == key):
+            return vals[i]
+    #Если ключ не был найден, то аварийно завершим функцию.
+    raise ValueError('Ключ не найден!')
+};
+</code></pre>
+
+<h2>Пример использования</h2>
+<p class = "lang"><b>C++</b></p><pre><code class = "C++">
+//Очистка ассоциативного массива
+clear(n);
+
+//Добавление нескольких пар "ключ-значение"
+set(keys, vals, n, "Ivan", 213);
+set(keys, vals, n, "Anton", 21);
+set(keys, vals, n, "Egor", 321);
+
+//Замена значения для одного из ключей
+set(keys, vals, n, "Ivan", 1234);
+
+//Проверка на существования ключа (вернёт истину)
+std::cout << "\nIvan:" << exist(keys, n, "Ivan") << "\n";
+
+//Получение значения по ключу
+std::cout << get(keys, vals, n, "Ivan");    
+
+//Удаление ключей из ассоциативного массива
+rem(keys, vals, n, "Ivan");
+rem(keys, vals, n, "Egor");
+rem(keys, vals, n, "Anton");
+
+//Повторное удаление ключа не "уронит" программу
+rem(keys, vals, n, "Ivan");
+
+//Проверка на существования ключа (вернёт ложь)
+std::cout << "\nIvan:" << exist(keys, n, "Ivan");
+</code></pre>
+
+<p class = "lang"><b>Pascal</b></p><pre><code>
+{Очистка ассоциативного массива}
+clear(n);
+
+{Добавление нескольких пар "ключ-значение"}
+set(keys, vals, n, "Ivan", 213);
+set(keys, vals, n, "Anton", 21);
+set(keys, vals, n, "Egor", 321);
+
+{Замена значения для одного из ключей}
+set(keys, vals, n, "Ivan", 1234);
+
+{Проверка на существования ключа (вернёт истину)}
+println("Ivan: ", exist(keys, n, "Ivan"));
+
+{Получение значения по ключу}
+println(get(keys, vals, n, "Ivan"));    
+
+{Удаление ключей из ассоциативного массива}
+rem(keys, vals, n, "Ivan");
+rem(keys, vals, n, "Egor");
+rem(keys, vals, n, "Anton");
+
+{Повторное удаление ключа не "уронит" программу}
+rem(keys, vals, n, "Ivan");
+
+{Проверка на существования ключа (вернёт ложь)}
+println("Ivan: ", exist(keys, n, "Ivan"));
+</code></pre>
+
+<p class = "lang"><b>Python</b></p><pre><code class = "Python">
+#Очистка ассоциативного массива
+clear(vals, keys)
+
+#Добавление нескольких пар "ключ-значение"
+_set_(keys, vals, "Ivan", 213)
+_set_(keys, vals, "Anton", 21)
+_set_(keys, vals, "Egor", 321)
+
+#Замена значения для одного из ключей
+_set_(keys, vals, "Ivan", 1234)
+
+#Проверка на существования ключа (вернёт истину)
+print("Ivan:", exist(keys, "Ivan"))
+
+#Получение значения по ключу
+print(get(keys, vals, "Ivan"))
+
+#Удаление ключей из ассоциативного массива
+rem(keys, vals, "Ivan")
+rem(keys, vals, "Egor")
+rem(keys, vals, "Anton")
+
+#Повторное удаление ключа не "уронит" программу
+rem(keys, vals, "Ivan")
+
+#Проверка на существования ключа (вернёт ложь)
+print("Ivan:", exist(keys, "Ivan"))
+</code></pre>
+
+<p>Итак, как вы видите, написать на каком-либо языке ассоциативный массив
+не представляет особой трудности, а для решения немалого количества задач
+он является очень удобной структурой данных!</p>
+
+<a href="./struct.html" class = "btn">Структуры данных</a>
+<a href = "./about.html" class = "lefttext">©Все права защищены</a></main>
+<footer>
+    <a href = "#up" class = "footer"></a>
+</footer>
+    </body>
+</html>
+
+<!-- Да, я знаю, что это — поздравление самого себя с 21 марта, но благодаря тому, что сайт будет абсолютно статический — почему бы и нет? -->
+<!-- Особенно, если учесть, что JS будет только здесь и в тестах — проблем быть не должно от слова "совсем". -->
+<script>
+    function show_menu()
+    {
+        let menu = document.getElementById("menu");
+        if (menu.style.display != "block")
+        {
+            menu.style.display = "block";
+        }
+        else
+        {
+            menu.style.display = "none";
+        };
+    };
+</script>
